@@ -5,7 +5,7 @@ page 50107 "CSD Seminar Comment List"
     Caption = 'Seminar Comment List';
     PageType = List;
     SourceTable = "CSD Seminar Comment Line";
-    Editable=false;
+    Editable = false;
 
     layout
     {
@@ -13,17 +13,17 @@ page 50107 "CSD Seminar Comment List"
         {
             repeater(Group)
             {
-                field(Date;rec.Date)
+                field(Date; rec.Date)
                 {
                     ApplicationArea = All;
                 }
-                field(Code;rec.Code)
+                field(Code; rec.Code)
                 {
-                    Visible=false;
+                    Visible = false;
                     ApplicationArea = All;
                 }
-                field(Comment;rec.Comment)
-                {    
+                field(Comment; rec.Comment)
+                {
                     ApplicationArea = All;
                 }
             }
