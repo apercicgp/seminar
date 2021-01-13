@@ -18,7 +18,7 @@ page 50101 "CSD Seminar Card"
                     ApplicationArea = All;
                     trigger OnAssistEdit();
                     begin
-                        if AssistEdit then
+                        if rec.AssistEdit then
                             CurrPage.Update;
                     end;
                 }
@@ -42,7 +42,7 @@ page 50101 "CSD Seminar Card"
                 {
                     ApplicationArea = All;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; rec.Blocked)
                 {
                     ApplicationArea = All;
                 }
