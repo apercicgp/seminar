@@ -38,38 +38,29 @@ report 50101 "CSD SeminarRegParticipantList"
             {
                 IncludeCaption = true;
             }
-        }
-    }
-
-    requestpage
-    {
-        layout
-        {
-            area(Content)
+            dataitem(SeminarRegistrationLine; "CSD Seminar Registration Line")
             {
-                group(GroupName)
-                {
-                    field(Name; SourceExpression)
-                    {
-                        ApplicationArea = All;
+                DataItemTableView = sorting("Document No.", "Line No.");
 
-                    }
+                DataItemLink = "Document No." = field("No.");
+
+                column(Bill_to_Customer_No_; "Bill-to Customer No.")
+                {
+                    IncludeCaption = true;
                 }
-            }
-        }
-
-        actions
-        {
-            area(processing)
-            {
-                action(ActionName)
+                column(Participant_Contact_No_; "Participant Contact No.")
                 {
-                    ApplicationArea = All;
-
+                    IncludeCaption = true;
+                }
+                column(Participant_Name; "Participant Name")
+                {
+                    IncludeCaption = true;
                 }
             }
         }
     }
+
+
 
     var
         myInt: Integer;
