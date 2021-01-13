@@ -19,8 +19,36 @@ codeunit 50139 EventSubscriptions
         DocNoOfRecords: Boolean;
         NextEntryNo: Integer;
     begin
-
-
     end;
+
+    [EventSubscriber(ObjectType::Page, 344, 'OnAfterNavigateShowRecords', '', true, true)]
+    local procedure ExtendNavigateOnAfterNavigateShowFindRecords
+    (TableID: Integer;
+    DocNoFilter: Text;
+    PostingDateFilter: Text;
+    ItemTrackingSearch: Boolean);
+    var
+        SeminarLedgerEntry: record "CSD Seminar Ledger Entry";
+        PostedSeminarRegHeader: record "CSD Posted Seminar Reg. Header";
+    begin
+        begin
+            case TableID of
+                Database::"CSD Posted Seminar Reg. Header":
+                    begin
+                        PostedSeminarRegHeader.SetFilter("No.", DocNoFilter);
+                        PostedSeminarRegHeader.SetFilter("Posting Date", PostingDateFilter);
+                        Page.Run(0, PostedSeminarRegHeader);
+                    end;
+                Database::"CSD Seminar Ledger Entry":
+                    begin
+                        SeminarLedgerEntry.SetFilter("Document No.", DocNoFilter);
+                        SeminarLedgerEntry.SetFilter("Posting Date", PostingDateFilter);
+                        Page.Run(0, SeminarLedgerEntry);
+                    end;
+            end;
+        end
+    end;
+
+
 }
 
